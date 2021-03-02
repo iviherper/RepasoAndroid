@@ -75,10 +75,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 if (grabar) {
+                    poliline = new PolylineOptions();
                     btnGrabarParar.setText(R.string.grabar);
                     lm.removeUpdates(listener);
                     grabarRutaFirebase();
                 } else {
+                    poliline = new PolylineOptions();
                     btnGrabarParar.setText(R.string.parar);
                     chekearPermiso();
                 }
@@ -99,7 +101,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void pintarRuta(Ruta ruta_selec) {
-        mMap.clear();
+        poliline = new PolylineOptions();
         for (Punto p:ruta_selec.getPuntos()
              ) {
             mostrarPoly(p);
